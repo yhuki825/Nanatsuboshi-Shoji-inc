@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<!--
+================================================================
+  ななつぼし商事株式会社 ブランドサイト（デザイン案）
+  コンセプト：北斗七星 ― 七つの星が、進む先を指し示す
+    ・ひしゃくの「器」の4星＝総合コンサルティング事業（戦略／営業・マーケ／業務改革／DX）
+    ・ひしゃくの「柄」の3星＝広告事業（SNS／動画広告／D2C広告運用）
+    ・北斗七星が指す北極星＝お客さまの事業のゴール
+
+  デプロイ：Cloudflare Pages（Direct Upload）にこの index.html をそのままアップロード
+  外部依存：Google Fonts／Unsplash画像（読み込み失敗時はCSSの星空背景に自動で切り替え）
+
+  ■ 公開前の確認事項（要確認）
+  [ ] 代表者の肩書き（「代表取締役」で表記。正式な役職名をご確認ください）
+  [ ] 代表メッセージは草案です。佐藤様ご本人の確認・修正・承認をお願いします
+  [ ] 設立年月日・資本金・従業員数などの会社情報（未確認のため会社概要ではコメントアウト）
+  [ ] 住所表記（ビル名・階数の表記ゆれ、全角/半角）
+  [ ] 各サービス説明文の内容が実際の提供範囲と一致しているか
+  [ ] 景品表示法：広告・SNS運用支援における表示内容（ステルスマーケティング規制を含む）への配慮方針の掲載要否
+  [ ] 薬機法・健康増進法：D2C（化粧品・健康食品等）広告運用代行における表現チェック体制の記載要否
+  [ ] 実績数値・取引先ロゴは未掲載（掲載する場合は根拠資料と先方の許諾を確認）
+  [ ] 画像はUnsplashのフリー素材（差し替え時はライセンスを確認）
+  [ ] プライバシーポリシーページの要否
+  [ ] OGP画像・favicon の用意
+================================================================
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ななつぼし商事株式会社｜広告とコンサルティングで、進む先を照らす</title>
+<meta name="description" content="ななつぼし商事株式会社は、SNSマーケティング・動画広告・D2C広告運用の広告事業と、戦略・営業支援・業務改革・DX支援の総合コンサルティング事業を展開しています。">
+<meta property="og:title" content="ななつぼし商事株式会社">
+<meta property="og:description" content="七つの専門領域で、事業の進む先を指し示す。">
+<meta property="og:type" content="website">
+<!-- 要確認：og:image と og:url を公開URL確定後に設定 -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F1733'/%3E%3Cg fill='%23F3E7B8'%3E%3Ccircle cx='25' cy='8' r='2'/%3E%3Ccircle cx='26' cy='16' r='1.6'/%3E%3Ccircle cx='19' cy='18' r='1.6'/%3E%3Ccircle cx='18' cy='11' r='1.4'/%3E%3Ccircle cx='13' cy='11' r='1.6'/%3E%3Ccircle cx='9' cy='12' r='1.6'/%3E%3Ccircle cx='4' cy='17' r='1.8'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Shippori+Mincho+B1:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0F1733;      /* 夜天 */
+  --night-2:#141E43;    /* 深藍 */
+  --night-3:#1E2A5A;    /* 薄明 */
+  --star:#F3E7B8;       /* 星明かり */
+  --gold:#D9B45A;       /* 一等星 */
+  --text:#E4E8F3;
+  --mute:#98A3C7;
+  --line:rgba(170,184,230,.18);
+  --line-strong:rgba(170,184,230,.34);
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --latin:"Cormorant Garamond","Times New Roman",serif;
+  --wrap:1180px;
+  --ease:cubic-bezier(.22,.7,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--night);color:var(--text);
+  font-family:var(--sans);font-size:16px;line-height:1.95;letter-spacing:.04em;
+  word-break:auto-phrase;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+p,h1,h2,h3,h4{text-wrap:pretty}
+.nw{display:inline-block}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--star);outline-offset:4px;border-radius:2px}
+
+.skip{position:fixed;left:16px;top:-60px;z-index:200;background:var(--star);color:var(--night);padding:10px 16px;text-decoration:none;font-weight:700;transition:top .2s}
+.skip:focus{top:16px}
+
+.wrap{width:min(var(--wrap),100% - 48px);margin-inline:auto}
+
+/* ---------- header ---------- */
+.site-header{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  transition:background .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{background:rgba(15,23,51,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--line)}
+.header-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:40px;height:26px}
+.brand-name{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.12em;line-height:1.2}
+.brand-name small{display:block;font-family:var(--latin);font-style:italic;font-weight:400;font-size:.78rem;letter-spacing:.06em;color:var(--mute)}
+.gnav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.gnav a{text-decoration:none;font-size:.86rem;letter-spacing:.12em;color:var(--text);position:relative;padding:6px 0}
+.gnav a::after{content:"";position:absolute;left:50%;bottom:-2px;width:4px;height:4px;border-radius:50%;background:var(--star);transform:translateX(-50%) scale(0);transition:transform .3s var(--ease)}
+.gnav a:hover::after,.gnav a:focus-visible::after{transform:translateX(-50%) scale(1)}
+.menu-btn{display:none;background:none;border:1px solid var(--line-strong);width:48px;height:48px;border-radius:50%;cursor:pointer;position:relative;color:var(--text)}
+.menu-btn span{position:absolute;left:14px;right:14px;height:1px;background:currentColor;transition:transform .3s var(--ease),opacity .3s}
+.menu-btn span:nth-child(1){top:19px}
+.menu-btn span:nth-child(2){top:28px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){transform:translateY(-4.5px) rotate(-45deg)}
+
+/* ---------- scroll rail (北斗七星の星が順に灯る) ---------- */
+.rail{position:fixed;right:26px;top:50%;transform:translateY(-50%);height:min(56vh,440px);width:14px;z-index:90;pointer-events:none}
+.rail::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--line);transform:translateX(-50%)}
+.rail-fill{position:absolute;left:50%;top:0;width:1px;height:0;background:linear-gradient(var(--star),var(--gold));transform:translateX(-50%)}
+.rail i{position:absolute;left:50%;width:6px;height:6px;border-radius:50%;background:var(--night-3);border:1px solid var(--line-strong);transform:translate(-50%,-50%);transition:background .4s,box-shadow .4s,border-color .4s}
+.rail i.on{background:var(--star);border-color:var(--star);box-shadow:0 0 10px 2px rgba(243,231,184,.55)}
+.rail b{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);width:12px;height:12px;opacity:.25;transition:opacity .5s,filter .5s}
+.rail b.on{opacity:1;filter:drop-shadow(0 0 6px rgba(217,180,90,.9))}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:radial-gradient(120% 90% at 30% 20%,#1B2656 0%,var(--night) 58%)}
+#sky{position:absolute;inset:0;width:100%;height:100%}
+.hero-in{position:relative;z-index:2;min-height:100svh;display:grid;grid-template-columns:1fr auto;align-items:center;padding-top:76px;padding-bottom:64px}
+.hero-copy{grid-column:2;display:flex;flex-direction:row-reverse;gap:44px;align-items:flex-start}
+.hero h1{
+  writing-mode:vertical-rl;margin:0;
+  font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,4.6vw,3.9rem);
+  line-height:1.6;letter-spacing:.2em;
+}
+.hero h1 span{display:block;opacity:0;transform:translateY(-14px);animation:rise 1.4s var(--ease) forwards}
+.hero h1 span:nth-child(2){margin-top:2.2em;animation-delay:.35s}
+.hero-lead{writing-mode:vertical-rl;margin:0;font-size:.95rem;line-height:2.3;letter-spacing:.18em;color:var(--mute);max-height:22em;opacity:0;animation:fade 1.4s .9s var(--ease) forwards}
+.hero-fields{position:absolute;left:0;bottom:56px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:fade 1.2s 1.4s var(--ease) forwards}
+.hero-fields a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-size:.85rem;letter-spacing:.14em;padding:10px 18px;border:1px solid var(--line-strong);border-radius:999px;background:rgba(15,23,51,.5);transition:border-color .3s,background .3s}
+.hero-fields a:hover{border-color:var(--star);background:rgba(243,231,184,.08)}
+.hero-fields a em{font-style:normal;font-family:var(--latin);font-size:1rem;color:var(--star)}
+.scroll-cue{position:absolute;right:0;bottom:56px;font-family:var(--latin);font-style:italic;font-size:.95rem;color:var(--mute);display:flex;align-items:center;gap:12px}
+.scroll-cue::after{content:"";width:48px;height:1px;background:var(--mute);transform-origin:left;animation:cue 2.4s var(--ease) infinite}
+@keyframes rise{to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+@keyframes cue{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+
+/* ---------- common section ---------- */
+section{position:relative}
+.sec{padding:clamp(96px,14vw,168px) 0}
+.sec-head{margin-bottom:clamp(40px,6vw,72px)}
+.sec-head .star-name{font-family:var(--latin);font-style:italic;font-size:1.05rem;color:var(--gold);letter-spacing:.06em;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+.sec-head .star-name::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,3.2vw,2.5rem);line-height:1.6;letter-spacing:.1em;margin:0}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+
+/* ---------- concept ---------- */
+.concept{background:linear-gradient(var(--night),var(--night-2))}
+.concept-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,96px);align-items:center}
+.concept-text p{margin:0 0 1.6em;max-width:34em;font-family:var(--serif);font-size:1.02rem;line-height:2.25}
+.concept-text p:last-child{margin-bottom:0}
+.concept-fig{margin:0}
+.concept-fig svg{width:100%;height:auto;overflow:visible}
+.concept-fig figcaption{font-size:.8rem;color:var(--mute);margin-top:14px;letter-spacing:.1em}
+.cf-line{fill:none;stroke:var(--line-strong);stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s var(--ease)}
+.cf-pointer{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-dasharray:.012 .012;opacity:0;transition:opacity 1.6s 1.8s}
+.cf-star{fill:var(--star);opacity:0;transition:opacity .8s var(--ease)}
+.cf-polaris{opacity:0;transform-origin:center;transform-box:fill-box;transform:scale(.4);transition:opacity 1.2s 3s var(--ease),transform 1.2s 3s var(--ease)}
+.cf-label{fill:var(--mute);font-family:var(--latin);font-style:italic;font-size:15px;opacity:0;transition:opacity 1s 1.2s}
+.cf-label.gold{fill:var(--gold);font-family:var(--serif);font-style:normal;font-size:16px;letter-spacing:.1em;transition-delay:3.4s}
+.is-in .cf-line{stroke-dashoffset:0}
+.is-in .cf-pointer,.is-in .cf-label{opacity:1}
+.is-in .cf-star{opacity:1}
+.is-in .cf-polaris{opacity:1;transform:scale(1)}
+
+/* ---------- fields ---------- */
+.fields{background:var(--night-2)}
+.field{display:grid;grid-template-columns:1.15fr 1fr;gap:0;align-items:stretch;border-top:1px solid var(--line)}
+.field:last-child{border-bottom:1px solid var(--line)}
+.field + .field{direction:rtl}
+.field + .field > *{direction:ltr}
+.photo{position:relative;margin:0;overflow:hidden;background:var(--night-3);min-height:380px}
+.photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:saturate(.8) brightness(.82)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,51,.05),rgba(15,23,51,.45));pointer-events:none}
+.photo.is-fallback{background:
+  radial-gradient(1.5px 1.5px at 20% 30%,var(--star) 50%,transparent 51%),
+  radial-gradient(1px 1px at 70% 20%,var(--star) 50%,transparent 51%),
+  radial-gradient(1.2px 1.2px at 45% 70%,var(--star) 50%,transparent 51%),
+  radial-gradient(1px 1px at 85% 60%,var(--star) 50%,transparent 51%),
+  radial-gradient(1px 1px at 10% 80%,var(--star) 50%,transparent 51%),
+  linear-gradient(135deg,#243266,#0F1733)}
+.field-body{padding:clamp(40px,5vw,72px)}
+.field-body .constel{display:flex;align-items:center;gap:14px;margin:0 0 18px;font-size:.84rem;color:var(--mute);letter-spacing:.12em}
+.field-body .constel svg{width:64px;height:28px}
+.field-body h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.45rem,2.4vw,1.9rem);letter-spacing:.1em;line-height:1.6;margin:0 0 6px}
+.field-body .catch{font-family:var(--serif);color:var(--star);font-size:1.05rem;letter-spacing:.14em;margin:0 0 22px}
+.field-body p{margin:0 0 26px;max-width:30em}
+.field-body ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.field-body li{display:flex;align-items:center;gap:14px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.field-body li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--star);flex:none}
+
+/* ---------- services (constellation map) ---------- */
+.services{background:radial-gradient(90% 70% at 70% 30%,#1B2758,var(--night) 70%)}
+.svc-intro{max-width:36em;margin:-28px 0 48px;color:var(--mute)}
+.svc-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(32px,4vw,64px);align-items:start}
+.map{position:relative;aspect-ratio:640/360;width:100%}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map-line{stroke:var(--line-strong);stroke-width:1.2;fill:none}
+.map-line.hl{stroke:rgba(243,231,184,.55)}
+.map-area{font-family:var(--serif);font-size:14px;letter-spacing:.2em;fill:var(--mute)}
+.map-star{
+  position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border:0;background:none;cursor:pointer;padding:0;
+}
+.map-star::before{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:var(--star);transform:translate(-50%,-50%);box-shadow:0 0 12px 3px rgba(243,231,184,.45);transition:width .35s var(--ease),height .35s var(--ease),box-shadow .35s}
+.map-star::after{content:"";position:absolute;inset:6px;border-radius:50%;border:1px solid var(--gold);opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s var(--ease)}
+.map-star:hover::before{width:14px;height:14px}
+.map-star.is-active::before{width:14px;height:14px;background:#fff;box-shadow:0 0 22px 6px rgba(243,231,184,.7)}
+.map-star.is-active::after{opacity:1;transform:scale(1)}
+.map-star .tip{position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;font-size:.72rem;letter-spacing:.1em;color:var(--mute);pointer-events:none}
+.map-star.is-active .tip{color:var(--star)}
+
+.tabs{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.tab-group h3{font-family:var(--serif);font-size:.95rem;font-weight:500;letter-spacing:.16em;color:var(--mute);margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.tab-group [role="tablist"]{display:grid;gap:2px}
+.tab{appearance:none;background:none;border:0;color:var(--text);font:inherit;font-size:.92rem;text-align:left;padding:9px 10px 9px 0;cursor:pointer;display:flex;align-items:center;gap:12px;letter-spacing:.06em;transition:color .3s}
+.tab::before{content:"";width:6px;height:6px;border-radius:50%;border:1px solid var(--mute);flex:none;transition:background .3s,border-color .3s,box-shadow .3s}
+.tab:hover{color:var(--star)}
+.tab[aria-selected="true"]{color:var(--star)}
+.tab[aria-selected="true"]::before{background:var(--star);border-color:var(--star);box-shadow:0 0 8px var(--star)}
+
+.panel{border:1px solid var(--line);background:rgba(20,30,67,.72);position:sticky;top:100px}
+.panel .photo{min-height:0;aspect-ratio:16/10}
+.panel-body{padding:28px 30px 34px}
+.panel-meta{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 10px;font-size:.8rem;color:var(--mute);letter-spacing:.12em}
+.panel-meta .latin{font-family:var(--latin);font-style:italic;font-size:1rem;color:var(--gold);letter-spacing:.04em}
+.panel h4{font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:.08em;line-height:1.6;margin:0 0 14px}
+.panel p{margin:0 0 20px}
+.panel .kw{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.panel .kw li{font-size:.76rem;letter-spacing:.08em;padding:4px 12px;border-radius:999px;border:1px solid var(--line-strong);color:var(--mute)}
+.panel-inner{transition:opacity .35s var(--ease)}
+.panel-inner.is-swapping{opacity:0}
+
+/* ---------- approach ---------- */
+.approach{background:var(--night)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:22px;height:1px;background:linear-gradient(90deg,var(--line-strong),var(--gold),var(--line-strong))}
+.steps li{position:relative;padding:0 28px 0 0}
+.step-mark{display:flex;align-items:center;gap:14px;height:44px;margin-bottom:22px}
+.step-mark i{width:12px;height:12px;border-radius:50%;background:var(--night);border:1px solid var(--star);box-shadow:0 0 0 6px var(--night)}
+.steps li:last-child .step-mark i{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 6px var(--night),0 0 16px 4px rgba(217,180,90,.6)}
+.step-mark span{font-family:var(--latin);font-size:1.5rem;color:var(--mute);background:var(--night);padding-right:10px}
+.steps h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.12em;margin:0 0 4px}
+.steps .sub{font-size:.8rem;color:var(--gold);letter-spacing:.12em;margin:0 0 14px}
+.steps p{margin:0;font-size:.92rem;color:var(--mute);line-height:1.95}
+
+/* ---------- message ---------- */
+.message{overflow:hidden;background:var(--night-2)}
+.message-bg{position:absolute;inset:0;margin:0}
+.message-bg img{width:100%;height:100%;object-fit:cover;opacity:.32;filter:saturate(.7)}
+.message-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--night-2) 20%,rgba(20,30,67,.6) 70%,rgba(20,30,67,.85))}
+.message-bg.is-fallback{background:radial-gradient(80% 80% at 80% 20%,#2A3A78,var(--night-2))}
+.message-in{position:relative;display:grid;grid-template-columns:auto 1fr;gap:clamp(40px,7vw,110px);align-items:start}
+.message h2.v{writing-mode:vertical-rl;font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,2.8vw,2.2rem);letter-spacing:.24em;line-height:1.8;margin:0;height:11em}
+.message-body{writing-mode:vertical-rl;font-family:var(--serif);font-size:1rem;line-height:2.4;letter-spacing:.12em;max-height:27em;overflow-x:auto;justify-self:end;padding-bottom:8px}
+.message-body p{margin:0 0 0 1.4em}
+.sign{margin-top:2em !important;text-align:end}
+.sign span{font-size:.82rem;color:var(--mute);margin-bottom:.8em;display:inline-block}
+.sign strong{font-weight:600;font-size:1.25rem;letter-spacing:.3em}
+
+/* ---------- company ---------- */
+.company{background:var(--night)}
+.company-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,96px)}
+.profile{width:100%;border-collapse:collapse}
+.profile th,.profile td{padding:22px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-weight:400}
+.profile tr:first-child th,.profile tr:first-child td{border-top:1px solid var(--line-strong)}
+.profile th{width:9em;color:var(--mute);font-size:.88rem;letter-spacing:.14em;padding-right:24px}
+.profile td ul{margin:0;padding:0;list-style:none}
+.profile td ul + h5{margin-top:14px}
+.profile h5{margin:0 0 4px;font-family:var(--serif);font-weight:600;font-size:.95rem;letter-spacing:.12em;color:var(--star)}
+.profile td li{padding-left:1.1em;position:relative}
+.profile td li::before{content:"";position:absolute;left:0;top:.9em;width:4px;height:4px;border-radius:50%;background:var(--mute)}
+
+/* ---------- footer ---------- */
+.site-footer{border-top:1px solid var(--line);padding:56px 0 36px;background:var(--night)}
+.footer-in{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
+.footer-in address{font-style:normal;font-size:.84rem;color:var(--mute);margin-top:14px;line-height:1.9}
+.fnav ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,auto);gap:8px 40px}
+.fnav a{text-decoration:none;font-size:.84rem;color:var(--mute);letter-spacing:.1em}
+.fnav a:hover{color:var(--star)}
+.copy{margin:48px 0 0;font-family:var(--latin);font-size:.9rem;color:var(--mute);letter-spacing:.06em}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .svc-layout{grid-template-columns:1fr}
+  .panel{position:relative;top:0}
+  .steps{grid-template-columns:1fr 1fr;row-gap:48px}
+  .steps::before{display:none}
+}
+@media (max-width:860px){
+  .menu-btn{display:block;z-index:120}
+  .gnav{position:fixed;inset:0;background:rgba(15,23,51,.97);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+  .gnav.is-open{opacity:1;visibility:visible}
+  .gnav ul{flex-direction:column;align-items:center;gap:26px}
+  .gnav a{font-family:var(--serif);font-size:1.2rem}
+  .rail{display:none}
+  .concept-grid,.company-grid{grid-template-columns:1fr}
+  .field,.field + .field{grid-template-columns:1fr;direction:ltr}
+  .photo{min-height:260px}
+  .message-in{grid-template-columns:1fr}
+  .message h2.v,.message-body{writing-mode:horizontal-tb;height:auto;max-height:none}
+  .message h2.v{letter-spacing:.12em}
+  .message-body p{margin:0 0 1.2em}
+  .message-body{justify-self:stretch;line-height:2.1}
+  .sign{text-align:right}
+  .sign span{display:block;margin:0}
+  .message-bg::after{background:rgba(20,30,67,.82)}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .hero-in{grid-template-columns:1fr;align-items:end;padding-bottom:150px}
+  .hero-copy{grid-column:1;justify-content:flex-start;gap:26px}
+  .hero h1{font-size:2.15rem}
+  .hero-lead{max-height:19em;font-size:.86rem}
+  .hero-fields{bottom:40px}
+  .scroll-cue{display:none}
+  .tabs{grid-template-columns:1fr}
+  .map-star .tip{display:none}
+  .steps{grid-template-columns:1fr}
+  .profile th{width:6.5em}
+  .panel-body{padding:24px 20px 28px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-delay:0s !important;transition-duration:.01ms !important;transition-delay:0s !important}
+  .hero h1 span,.hero-lead,.hero-fields{opacity:1;transform:none}
+  .reveal{opacity:1;transform:none}
+  .scroll-cue::after{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">本文へスキップ</a>
+
+<header class="site-header" id="header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top" aria-label="ななつぼし商事株式会社 トップへ">
+      <svg viewBox="0 0 40 26" aria-hidden="true">
+        <polyline points="2,20 11,14 18,13 23,13 24,20 34,21 36,6 23,13" fill="none" stroke="rgba(243,231,184,.45)" stroke-width=".8"/>
+        <g fill="#F3E7B8"><circle cx="2" cy="20" r="1.6"/><circle cx="11" cy="14" r="1.4"/><circle cx="18" cy="13" r="1.4"/><circle cx="23" cy="13" r="1.2"/><circle cx="24" cy="20" r="1.4"/><circle cx="34" cy="21" r="1.4"/><circle cx="36" cy="6" r="1.8"/></g>
+      </svg>
+      <span class="brand-name">ななつぼし商事<small>Nanatsuboshi Shoji</small></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span></button>
+    <nav class="gnav" id="gnav" aria-label="メインメニュー">
+      <ul>
+        <li><a href="#concept">私たちについて</a></li>
+        <li><a href="#fields">事業領域</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#approach">進め方</a></li>
+        <li><a href="#message">メッセージ</a></li>
+        <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="rail" id="rail" aria-hidden="true">
+  <div class="rail-fill" id="railFill"></div>
+  <i style="top:0%"></i><i style="top:16.66%"></i><i style="top:33.33%"></i><i style="top:50%"></i><i style="top:66.66%"></i><i style="top:83.33%"></i><i style="top:100%"></i>
+  <b id="railPolaris"><svg viewBox="0 0 12 12"><path d="M6 0 L7.2 4.8 L12 6 L7.2 7.2 L6 12 L4.8 7.2 L0 6 L4.8 4.8Z" fill="#D9B45A"/></svg></b>
+</div>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-label="トップ">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <h1><span>七つの星が、</span><span>進む先を指し示す。</span></h1>
+      <p class="hero-lead">広告とコンサルティング。<br>二つの力で、事業の道筋を描き<br>ゴールまで伴走します。</p>
+    </div>
+    <div class="hero-fields">
+      <a href="#field-consulting"><em>4</em>総合コンサルティング事業</a>
+      <a href="#field-ads"><em>3</em>広告事業</a>
+    </div>
+    <p class="scroll-cue" aria-hidden="true">Scroll</p>
+  </div>
+</section>
+
+<!-- ================= CONCEPT ================= -->
+<section class="sec concept" id="concept" aria-labelledby="concept-ttl">
+  <div class="wrap concept-grid">
+    <div class="concept-text">
+      <div class="sec-head reveal">
+        <p class="star-name">Ursa Major</p>
+        <h2 id="concept-ttl"><span class="nw">北斗七星は、</span><span class="nw">いつも北極星を</span><span class="nw">指している。</span></h2>
+      </div>
+      <div class="reveal">
+        <p>夜空で道に迷ったとき、旅人は北斗七星を探しました。ひしゃくの先にある二つの星を結び、その先へ延ばしていくと、動かない北極星にたどり着く。</p>
+        <p>ななつぼし商事は、その七つの星でありたいと考えています。お客さまが目指す北極星、つまり事業のゴールを見失わないように、七つの専門領域から道筋を示し、そこへ向かう一歩一歩を支えます。</p>
+        <p>戦略を描くだけでも、広告を出すだけでもない。<span class="nw">描いた道を、実際に進むところまで。</span></p>
+      </div>
+    </div>
+    <figure class="concept-fig" id="conceptFig">
+      <svg viewBox="0 0 600 520" role="img" aria-labelledby="cf-title">
+        <title id="cf-title">北斗七星のひしゃくの先の二つの星を延ばすと北極星に届く図</title>
+        <polyline class="cf-line" pathLength="1" points="80,420 170,375 250,370 335,375 450,340 460,420 350,445 335,375"/>
+        <line class="cf-pointer" pathLength="1" x1="460" y1="420" x2="421" y2="92"/>
+        <g>
+          <circle class="cf-star" cx="80" cy="420" r="5" style="transition-delay:.9s"/>
+          <circle class="cf-star" cx="170" cy="375" r="4.5" style="transition-delay:.75s"/>
+          <circle class="cf-star" cx="250" cy="370" r="4.5" style="transition-delay:.6s"/>
+          <circle class="cf-star" cx="335" cy="375" r="3.8" style="transition-delay:.45s"/>
+          <circle class="cf-star" cx="350" cy="445" r="4.5" style="transition-delay:.3s"/>
+          <circle class="cf-star" cx="460" cy="420" r="4.8" style="transition-delay:.15s"/>
+          <circle class="cf-star" cx="450" cy="340" r="5.6"/>
+        </g>
+        <g class="cf-polaris">
+          <circle cx="421" cy="92" r="26" fill="rgba(217,180,90,.12)"/>
+          <path d="M421 70 L425 88 L443 92 L425 96 L421 114 L417 96 L399 92 L417 88Z" fill="#D9B45A"/>
+        </g>
+        <text class="cf-label" x="474" y="336">Dubhe</text>
+        <text class="cf-label" x="474" y="432">Merak</text>
+        <text class="cf-label gold" x="456" y="98">北極星 ＝ お客さまのゴール</text>
+        <text class="cf-label" x="130" y="480" style="font-family:'Shippori Mincho B1',serif;font-style:normal;font-size:14px;letter-spacing:2px">七つの専門領域</text>
+      </svg>
+      <figcaption>ひしゃくの先の二つの星を延ばした先に、北極星があります。</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= FIELDS ================= -->
+<section class="sec fields" id="fields" aria-labelledby="fields-ttl">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="star-name">Two fields</p>
+      <h2 id="fields-ttl">器をつくり、遠くへ届ける。</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <article class="field reveal" id="field-consulting">
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=70" alt="テーブルを囲んで議論するチーム" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.remove()">
+      </figure>
+      <div class="field-body">
+        <p class="constel">
+          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="10,8 30,6 34,22 12,24 10,8" fill="none" stroke="rgba(243,231,184,.5)" stroke-width=".8"/><g fill="#F3E7B8"><circle cx="10" cy="8" r="2"/><circle cx="30" cy="6" r="2.2"/><circle cx="34" cy="22" r="2"/><circle cx="12" cy="24" r="2"/></g><g fill="#3A4677"><circle cx="44" cy="10" r="1.6"/><circle cx="52" cy="12" r="1.6"/><circle cx="60" cy="18" r="1.6"/></g></svg>
+          ひしゃくの器にあたる四つの星
+        </p>
+        <h3>総合コンサルティング事業</h3>
+        <p class="catch">成果を受け止める、器をつくる。</p>
+        <p>どこへ向かうのか。何から手をつけるのか。戦略から営業の仕組み、日々の業務、デジタル活用まで、事業の土台を整えます。</p>
+        <ul>
+          <li>戦略コンサルティング</li>
+          <li>マーケティング・営業支援</li>
+          <li>業務改革</li>
+          <li>DX支援</li>
+        </ul>
+      </div>
+    </article>
+    <article class="field reveal" id="field-ads">
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=70" alt="ノートPCとスマートフォンでSNSを運用する手元" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.remove()">
+      </figure>
+      <div class="field-body">
+        <p class="constel">
+          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="4,20 18,12 32,10" fill="none" stroke="rgba(243,231,184,.5)" stroke-width=".8"/><g fill="#F3E7B8"><circle cx="4" cy="20" r="2.2"/><circle cx="18" cy="12" r="2"/><circle cx="32" cy="10" r="2"/></g><g fill="#3A4677"><circle cx="40" cy="8" r="1.6"/><circle cx="58" cy="6" r="1.6"/><circle cx="60" cy="20" r="1.6"/><circle cx="42" cy="22" r="1.6"/></g></svg>
+          ひしゃくの柄にあたる三つの星
+        </p>
+        <h3>広告事業</h3>
+        <p class="catch">整えた価値を、遠くへ届ける。</p>
+        <p>SNS、動画、D2C。お客さまの商品やサービスの魅力を、届けたい人のいる場所へ。企画・制作から運用・改善まで一貫して担います。</p>
+        <ul>
+          <li>SNSマーケティング支援</li>
+          <li>動画広告制作・運用</li>
+          <li>D2Cブランドの広告運用代行</li>
+        </ul>
+        <!-- 要確認：景品表示法（ステルスマーケティング規制を含む）・薬機法への対応方針をサイト上に明記するか -->
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="sec services" id="services" aria-labelledby="services-ttl">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="star-name">Seven stars</p>
+      <h2 id="services-ttl">七つの星、七つのサービス。</h2>
+    </div>
+    <p class="svc-intro reveal">星をえらぶと、そのサービスの内容が表示されます。</p>
+
+    <div class="svc-layout">
+      <div class="reveal">
+        <div class="map" id="map">
+          <svg viewBox="0 0 640 360" aria-hidden="true">
+            <text class="map-area" x="410" y="262">コンサルティング</text>
+            <text class="map-area" x="110" y="232">広告</text>
+            <polyline class="map-line" id="lineHandle" points="90,175 200,122 290,112 390,118"/>
+            <polyline class="map-line" id="lineBowl" points="390,118 520,72 540,172 410,202 390,118"/>
+          </svg>
+          <!-- 星ボタン（位置は viewBox 640x360 に対する%） -->
+          <button class="map-star" style="left:81.25%;top:20%"   data-svc="0" tabindex="-1" aria-hidden="true"><span class="tip">天枢</span></button>
+          <button class="map-star" style="left:84.37%;top:47.8%" data-svc="1" tabindex="-1" aria-hidden="true"><span class="tip">天璇</span></button>
+          <button class="map-star" style="left:64.06%;top:56.1%" data-svc="2" tabindex="-1" aria-hidden="true"><span class="tip">天璣</span></button>
+          <button class="map-star" style="left:60.94%;top:32.8%" data-svc="3" tabindex="-1" aria-hidden="true"><span class="tip">天権</span></button>
+          <button class="map-star" style="left:45.31%;top:31.1%" data-svc="4" tabindex="-1" aria-hidden="true"><span class="tip">玉衡</span></button>
+          <button class="map-star" style="left:31.25%;top:33.9%" data-svc="5" tabindex="-1" aria-hidden="true"><span class="tip">開陽</span></button>
+          <button class="map-star" style="left:14.06%;top:48.6%" data-svc="6" tabindex="-1" aria-hidden="true"><span class="tip">揺光</span></button>
+        </div>
+
+        <div class="tabs">
+          <div class="tab-group">
+            <h3 id="tg-consul">総合コンサルティング事業</h3>
+            <div role="tablist" aria-labelledby="tg-consul">
+              <button class="tab" role="tab" id="tab-0" data-svc="0" aria-controls="svcPanel" aria-selected="true">戦略コンサルティング</button>
+              <button class="tab" role="tab" id="tab-1" data-svc="1" aria-controls="svcPanel" aria-selected="false" tabindex="-1">マーケティング・営業支援</button>
+              <button class="tab" role="tab" id="tab-2" data-svc="2" aria-controls="svcPanel" aria-selected="false" tabindex="-1">業務改革</button>
+              <button class="tab" role="tab" id="tab-3" data-svc="3" aria-controls="svcPanel" aria-selected="false" tabindex="-1">DX支援</button>
+            </div>
+          </div>
+          <div class="tab-group">
+            <h3 id="tg-ads">広告事業</h3>
+            <div role="tablist" aria-labelledby="tg-ads">
+              <button class="tab" role="tab" id="tab-4" data-svc="4" aria-controls="svcPanel" aria-selected="false" tabindex="-1">SNSマーケティング支援</button>
+              <button class="tab" role="tab" id="tab-5" data-svc="5" aria-controls="svcPanel" aria-selected="false" tabindex="-1">動画広告制作・運用</button>
+              <button class="tab" role="tab" id="tab-6" data-svc="6" aria-controls="svcPanel" aria-selected="false" tabindex="-1">D2Cブランドの広告運用代行</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reveal" id="svcPanel" role="tabpanel" aria-labelledby="tab-0" aria-live="polite">
+        <div class="panel-inner" id="panelInner">
+          <figure class="photo" id="panelPhoto">
+            <img id="panelImg" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=70" alt="ホワイトボードの前で戦略を検討する様子" onerror="this.parentElement.classList.add('is-fallback');this.style.visibility='hidden'">
+          </figure>
+          <div class="panel-body">
+            <p class="panel-meta"><span id="panelField">総合コンサルティング事業</span><span class="latin" id="panelStar">天枢 Dubhe</span></p>
+            <h4 id="panelTitle">戦略コンサルティング</h4>
+            <p id="panelDesc">市場と自社の現在地を捉え、中長期の方針と取り組む順番を定めます。北斗七星で最も明るいこの星のように、すべての施策の起点になる領域です。</p>
+            <ul class="kw" id="panelKw"><li>事業戦略</li><li>市場・競合分析</li><li>中期経営計画</li><li>新規事業</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 要確認：各サービスの説明・キーワードが実際の提供範囲と合っているか -->
+  </div>
+</section>
+
+<!-- ================= APPROACH ================= -->
+<section class="sec approach" id="approach" aria-labelledby="approach-ttl">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="star-name">Navigation</p>
+      <h2 id="approach-ttl">星を読み、航路を進む。</h2>
+    </div>
+    <ol class="steps reveal">
+      <li>
+        <div class="step-mark"><i></i><span>01</span></div>
+        <h3>観測する</h3>
+        <p class="sub">現状の把握</p>
+        <p>数字と現場の声の両方から、いま事業がどこにいるのかを確かめます。</p>
+      </li>
+      <li>
+        <div class="step-mark"><i></i><span>02</span></div>
+        <h3>星図を描く</h3>
+        <p class="sub">戦略と指標の設計</p>
+        <p>目指すゴールを言葉と数字にし、そこへ至る道筋と優先順位を決めます。</p>
+      </li>
+      <li>
+        <div class="step-mark"><i></i><span>03</span></div>
+        <h3>航路を進む</h3>
+        <p class="sub">施策の実行</p>
+        <p>営業や業務の改善、広告の制作・運用など、描いた計画を形にします。</p>
+      </li>
+      <li>
+        <div class="step-mark"><i></i><span>04</span></div>
+        <h3>位置を測り直す</h3>
+        <p class="sub">検証と改善</p>
+        <p>結果を振り返り、進路を調整します。北極星に近づくまで繰り返します。</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= MESSAGE ================= -->
+<!-- 要確認：以下の代表メッセージは草案です。佐藤様ご本人による確認・修正・承認後に公開してください -->
+<section class="sec message" id="message" aria-labelledby="message-ttl">
+  <figure class="message-bg" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1800&q=60" alt="" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.remove()">
+  </figure>
+  <div class="wrap message-in">
+    <h2 class="v reveal" id="message-ttl">迷ったときに、<br>見上げる星に。</h2>
+    <div class="message-body reveal">
+      <p>事業を続けていると、進むべき方向が見えなくなる夜があります。</p>
+      <p>やるべきことは山ほどあるのに、どれから手をつければいいのかわからない。</p>
+      <p>そんなとき、見上げれば必ずそこにある星のような存在でありたい。</p>
+      <p>それが、ななつぼし商事という名前に込めた思いです。</p>
+      <p>戦略を描くこと、広告で届けること。その両方を一つのチームで担えることが、私たちの強みです。</p>
+      <p>お客さまの北極星へ、同じ夜空を見ながら進んでまいります。</p>
+      <p class="sign"><span>ななつぼし商事株式会社　代表取締役</span><!-- 要確認：肩書き --><br><strong>佐藤 有輝</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPANY ================= -->
+<section class="sec company" id="company" aria-labelledby="company-ttl">
+  <div class="wrap company-grid">
+    <div class="sec-head reveal">
+      <p class="star-name">Company</p>
+      <h2 id="company-ttl">会社概要</h2>
+    </div>
+    <table class="profile reveal">
+      <tbody>
+        <tr><th scope="row">会社名</th><td>ななつぼし商事株式会社</td></tr>
+        <tr><th scope="row">代表者</th><td>代表取締役　佐藤 有輝<!-- 要確認：肩書き --></td></tr>
+        <tr><th scope="row">所在地</th><td>〒103-0022<br>東京都中央区日本橋室町1-11-12<br>日本橋水野ビル7階<!-- 要確認：住所表記 --></td></tr>
+        <!-- 要確認：以下は未確認のため非表示。確定後にコメントを外して記入してください
+        <tr><th scope="row">設立</th><td></td></tr>
+        <tr><th scope="row">資本金</th><td></td></tr>
+        <tr><th scope="row">従業員数</th><td></td></tr>
+        <tr><th scope="row">取引銀行</th><td></td></tr>
+        -->
+        <tr>
+          <th scope="row">事業内容</th>
+          <td>
+            <h5>広告業</h5>
+            <ul><li>SNSマーケティング支援</li><li>動画広告制作・運用</li><li>D2Cブランドの広告運用代行</li></ul>
+            <h5>総合コンサルティング業</h5>
+            <ul><li>戦略コンサルティング</li><li>マーケティング・営業支援</li><li>業務改革</li><li>DX支援</li></ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-in">
+      <div>
+        <a class="brand" href="#top" aria-label="ななつぼし商事株式会社 トップへ">
+          <svg viewBox="0 0 40 26" aria-hidden="true"><g fill="#F3E7B8"><circle cx="2" cy="20" r="1.6"/><circle cx="11" cy="14" r="1.4"/><circle cx="18" cy="13" r="1.4"/><circle cx="23" cy="13" r="1.2"/><circle cx="24" cy="20" r="1.4"/><circle cx="34" cy="21" r="1.4"/><circle cx="36" cy="6" r="1.8"/></g></svg>
+          <span class="brand-name">ななつぼし商事株式会社</span>
+        </a>
+        <address>〒103-0022 東京都中央区日本橋室町1-11-12 日本橋水野ビル7階</address>
+      </div>
+      <nav class="fnav" aria-label="フッターメニュー">
+        <ul>
+          <li><a href="#concept">私たちについて</a></li>
+          <li><a href="#fields">事業領域</a></li>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#approach">進め方</a></li>
+          <li><a href="#message">メッセージ</a></li>
+          <li><a href="#company">会社概要</a></li>
+          <!-- 要確認：プライバシーポリシーページを設ける場合はここにリンクを追加 -->
+        </ul>
+      </nav>
+    </div>
+    <p class="copy">&copy; <span id="year">2026</span> Nanatsuboshi Shoji Co., Ltd.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- header / menu ---------- */
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const gnav = document.getElementById('gnav');
+  const setMenu = (open) => {
+    gnav.classList.toggle('is-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) gnav.querySelector('a').focus();
+  };
+  menuBtn.addEventListener('click', () => setMenu(!gnav.classList.contains('is-open')));
+  gnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && gnav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
+  });
+
+  /* ---------- scroll: header state + rail ---------- */
+  const railStars = [...document.querySelectorAll('#rail i')];
+  const railFill = document.getElementById('railFill');
+  const railPolaris = document.getElementById('railPolaris');
+  let ticking = false;
+  const onScroll = () => {
+    const y = window.scrollY;
+    header.classList.toggle('is-scrolled', y > 40);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, y / max) : 0;
+    railFill.style.height = (p * 100) + '%';
+    railStars.forEach((s, i) => s.classList.toggle('on', p >= i / 6 - 0.001 && (i > 0 || y > 10)));
+    railPolaris.classList.toggle('on', p > 0.985);
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
+  onScroll();
+
+  /* ---------- reveal ---------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, #conceptFig').forEach(el => io.observe(el));
+
+  /* ---------- services ---------- */
+  const IMG = id => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`;
+  const SVC = [
+    { field:'総合コンサルティング事業', star:'天枢 Dubhe', title:'戦略コンサルティング', img:'photo-1553877522-43269d4ea984', alt:'ホワイトボードの前で戦略を検討する様子',
+      desc:'市場と自社の現在地を捉え、中長期の方針と取り組む順番を定めます。北斗七星で最も明るいこの星のように、すべての施策の起点になる領域です。',
+      kw:['事業戦略','市場・競合分析','中期経営計画','新規事業'] },
+    { field:'総合コンサルティング事業', star:'天璇 Merak', title:'マーケティング・営業支援', img:'photo-1600880292203-757bb62b4baf', alt:'商談をするビジネスパーソン',
+      desc:'顧客像の整理から、集客・商談・受注までの流れを設計します。仕組みをつくって終わりにせず、現場のみなさんと一緒に動かします。',
+      kw:['顧客設計','営業プロセス','商談資料','インサイドセールス'] },
+    { field:'総合コンサルティング事業', star:'天璣 Phecda', title:'業務改革', img:'photo-1504384308090-c894fdcc538d', alt:'ノートパソコンで作業するオフィスの様子',
+      desc:'業務の流れを見える化し、ムダや属人化をほどいていきます。少ない負荷で回り続ける仕組みへ、無理のない順番で組み替えます。',
+      kw:['業務フロー整理','標準化','マニュアル整備','組織設計'] },
+    { field:'総合コンサルティング事業', star:'天権 Megrez', title:'DX支援', img:'photo-1531297484001-80022131f5a1', alt:'ノートパソコンとデジタル機器',
+      desc:'ツールの選定から導入、社内への定着まで伴走します。デジタルを「入れただけ」で終わらせず、毎日使われる道具にするところまでが支援範囲です。',
+      kw:['ツール選定','導入支援','データ活用','社内定着'] },
+    { field:'広告事業', star:'玉衡 Alioth', title:'SNSマーケティング支援', img:'photo-1611162617474-5b21e879e113', alt:'スマートフォンでSNSを見ている手元',
+      desc:'アカウント設計、投稿の企画、日々の運用、数値の分析まで。ブランドらしさが伝わり、ファンが育っていく発信をつくります。',
+      kw:['アカウント設計','投稿企画','運用代行','分析レポート'] },
+    { field:'広告事業', star:'開陽 Mizar', title:'動画広告制作・運用', img:'photo-1492691527719-9d1e07e534b4', alt:'撮影用のカメラ',
+      desc:'企画・撮影・編集から配信、効果改善までを一貫して担います。縦型のショート動画から横型の映像まで、配信する媒体に合わせて制作します。',
+      kw:['企画・構成','撮影・編集','ショート動画','配信運用'] },
+    { field:'広告事業', star:'揺光 Alkaid', title:'D2Cブランドの広告運用代行', img:'photo-1460925895917-afdab827c52f', alt:'分析データが表示されたノートパソコン',
+      desc:'新規顧客の獲得効率と、継続購入につながる顧客づくりの両面を見ながら、広告アカウントの設計・運用・レポーティングを担います。',
+      kw:['運用型広告','クリエイティブ改善','LTV視点','レポーティング'] }
+  ];
+  /* 要確認：D2C（化粧品・健康食品など）の広告は薬機法・景品表示法の表現規制の対象。チェック体制の記載要否 */
+
+  const tabs = [...document.querySelectorAll('.tab')];
+  const mapStars = [...document.querySelectorAll('.map-star')];
+  const panel = document.getElementById('svcPanel');
+  const inner = document.getElementById('panelInner');
+  const photo = document.getElementById('panelPhoto');
+  const $ = id => document.getElementById(id);
+  const lineHandle = $('lineHandle'), lineBowl = $('lineBowl');
+  let current = 0, swapTimer;
+
+  const render = (i) => {
+    const s = SVC[i];
+    photo.classList.remove('is-fallback');
+    const old = $('panelImg');
+    const img = document.createElement('img');
+    img.id = 'panelImg'; img.alt = s.alt; img.src = IMG(s.img);
+    img.onerror = () => { photo.classList.add('is-fallback'); img.style.visibility = 'hidden'; };
+    old.replaceWith(img);
+    $('panelField').textContent = s.field;
+    $('panelStar').textContent = s.star;
+    $('panelTitle').textContent = s.title;
+    $('panelDesc').textContent = s.desc;
+    $('panelKw').innerHTML = s.kw.map(k => `<li>${k}</li>`).join('');
+  };
+
+  const select = (i, focus = false) => {
+    if (i === current) return;
+    current = i;
+    tabs.forEach(t => {
+      const on = Number(t.dataset.svc) === i;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      if (on && focus) t.focus();
+    });
+    mapStars.forEach(m => m.classList.toggle('is-active', Number(m.dataset.svc) === i));
+    lineBowl.classList.toggle('hl', i <= 3);
+    lineHandle.classList.toggle('hl', i >= 4);
+    panel.setAttribute('aria-labelledby', 'tab-' + i);
+    clearTimeout(swapTimer);
+    if (reduce) { render(i); return; }
+    inner.classList.add('is-swapping');
+    swapTimer = setTimeout(() => { render(i); inner.classList.remove('is-swapping'); }, 320);
+  };
+
+  tabs.forEach(t => {
+    t.addEventListener('click', () => select(Number(t.dataset.svc)));
+    t.addEventListener('keydown', e => {
+      const keys = ['ArrowDown','ArrowRight','ArrowUp','ArrowLeft','Home','End'];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      let n = current;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (current + 1) % 7;
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (current + 6) % 7;
+      if (e.key === 'Home') n = 0;
+      if (e.key === 'End') n = 6;
+      select(n, true);
+    });
+  });
+  mapStars.forEach(m => {
+    m.addEventListener('click', () => select(Number(m.dataset.svc)));
+    m.addEventListener('mouseenter', () => { if (window.matchMedia('(hover: hover)').matches) select(Number(m.dataset.svc)); });
+  });
+  mapStars[0].classList.add('is-active');
+  lineBowl.classList.add('hl');
+
+  /* ---------- hero canvas: 星が集まって北斗七星になる ---------- */
+  const cv = document.getElementById('sky');
+  const ctx = cv.getContext('2d');
+  // 並び：Alkaid, Mizar, Alioth, Megrez, Dubhe, Merak, Phecda（ボックス内の相対座標）
+  const DIP = [[.04,.72],[.28,.40],[.48,.33],[.66,.38],[.92,.14],[.96,.62],[.70,.74]];
+  const SIZE = [2.6,2.4,2.5,1.9,2.9,2.4,2.3];
+  const ORDER = [0,1,2,3,4,5,6,3];
+  let W = 0, H = 0, dpr = 1, bg = [], dip = [], polaris = { x:0, y:0 }, t0 = 0, running = true, rafId;
+
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const ease = t => 1 - Math.pow(1 - t, 3);
+
+  const layout = () => {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const mobile = W < 640;
+    const box = mobile
+      ? { x: W * .08, y: H * .20, w: W * .84, h: H * .20 }
+      : { x: W * .05, y: H * .36, w: Math.min(W * .52, 760), h: H * .34 };
+    const count = Math.round(W * H / 5200);
+    bg = Array.from({ length: count }, () => ({
+      x: Math.random() * W, y: Math.random() * H, r: Math.random() < .08 ? rand(1, 1.6) : rand(.3, .9),
+      a: rand(.25, .85), s: rand(.4, 1.6), ph: Math.random() * 6.28
+    }));
+    dip = DIP.map((p, i) => ({
+      tx: box.x + p[0] * box.w, ty: box.y + p[1] * box.h,
+      sx: Math.random() * W, sy: Math.random() * H, r: SIZE[i] * (mobile ? .9 : 1.15)
+    }));
+    const d = dip[4], m = dip[5];
+    const k = mobile ? .9 : 1.25;
+    polaris = { x: d.tx + (d.tx - m.tx) * k, y: Math.max(mobile ? 96 : 110, d.ty + (d.ty - m.ty) * k) };
+  };
+
+  const glow = (x, y, r, a) => {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r * 6);
+    g.addColorStop(0, `rgba(243,231,184,${.55 * a})`);
+    g.addColorStop(1, 'rgba(243,231,184,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 6, 0, 6.283); ctx.fill();
+    ctx.fillStyle = `rgba(255,250,232,${a})`; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.283); ctx.fill();
+  };
+
+  const draw = (now) => {
+    const el = reduce ? 99999 : now - t0;
+    ctx.clearRect(0, 0, W, H);
+    // 背景の星
+    for (const s of bg) {
+      const tw = reduce ? 1 : .65 + .35 * Math.sin(now / 1000 * s.s + s.ph);
+      ctx.fillStyle = `rgba(214,222,245,${s.a * tw})`;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill();
+    }
+    // 集合
+    const gather = ease(Math.min(1, el / 2600));
+    const pts = dip.map(p => ({ x: p.sx + (p.tx - p.sx) * gather, y: p.sy + (p.ty - p.sy) * gather, r: p.r }));
+    // 線
+    const lineP = Math.max(0, Math.min(1, (el - 2000) / 1800));
+    if (lineP > 0) {
+      const segs = ORDER.length - 1, prog = lineP * segs;
+      ctx.strokeStyle = 'rgba(243,231,184,.32)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pts[ORDER[0]].x, pts[ORDER[0]].y);
+      for (let i = 0; i < segs; i++) {
+        const a = pts[ORDER[i]], b = pts[ORDER[i + 1]];
+        const f = Math.max(0, Math.min(1, prog - i));
+        if (f <= 0) break;
+        ctx.lineTo(a.x + (b.x - a.x) * f, a.y + (b.y - a.y) * f);
+      }
+      ctx.stroke();
+    }
+    // 指極線 → 北極星
+    const pp = Math.max(0, Math.min(1, (el - 3800) / 1600));
+    if (pp > 0) {
+      const d = pts[4], e = ease(pp);
+      ctx.save();
+      ctx.setLineDash([3, 7]);
+      ctx.strokeStyle = 'rgba(217,180,90,.6)';
+      ctx.beginPath(); ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x + (polaris.x - d.x) * e, d.y + (polaris.y - d.y) * e); ctx.stroke();
+      ctx.restore();
+    }
+    for (const p of pts) glow(p.x, p.y, p.r, .95);
+    // 北極星
+    const pa = Math.max(0, Math.min(1, (el - 5000) / 1200));
+    if (pa > 0) {
+      const pulse = reduce ? 1 : 1 + .08 * Math.sin(now / 900);
+      const R = 16 * pulse * ease(pa);
+      const g = ctx.createRadialGradient(polaris.x, polaris.y, 0, polaris.x, polaris.y, R * 2.4);
+      g.addColorStop(0, `rgba(217,180,90,${.45 * pa})`); g.addColorStop(1, 'rgba(217,180,90,0)');
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(polaris.x, polaris.y, R * 2.4, 0, 6.283); ctx.fill();
+      ctx.fillStyle = `rgba(236,205,128,${pa})`;
+      ctx.beginPath();
+      for (let i = 0; i < 8; i++) {
+        const ang = i * Math.PI / 4 - Math.PI / 2, rr = i % 2 ? R * .22 : R;
+        ctx.lineTo(polaris.x + Math.cos(ang) * rr, polaris.y + Math.sin(ang) * rr);
+      }
+      ctx.closePath(); ctx.fill();
+    }
+    if (!reduce && running) rafId = requestAnimationFrame(draw);
+  };
+
+  layout();
+  t0 = performance.now();
+  if (reduce) draw(0); else rafId = requestAnimationFrame(draw);
+
+  let rt;
+  window.addEventListener('resize', () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => { layout(); dip.forEach(p => { p.sx = p.tx; p.sy = p.ty; }); if (reduce) draw(0); }, 150);
+  });
+  // ヒーローが画面外のときは描画を止める
+  new IntersectionObserver(([en]) => {
+    if (reduce) return;
+    if (en.isIntersecting && !running) { running = true; rafId = requestAnimationFrame(draw); }
+    else if (!en.isIntersecting) { running = false; cancelAnimationFrame(rafId); }
+  }).observe(cv);
+})();
+</script>
+</body>
+</html>
