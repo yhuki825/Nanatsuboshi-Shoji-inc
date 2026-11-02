@@ -3,8 +3,9 @@
 ================================================================
   ななつぼし商事株式会社 ブランドサイト（デザイン案）
   コンセプト：北斗七星 ― 七つの星が、進む先を指し示す
-    ・ひしゃくの「器」の4星＝総合コンサルティング事業（戦略／営業・マーケ／業務改革／DX）
-    ・ひしゃくの「柄」の3星＝広告事業（SNS／動画広告／D2C広告運用）
+    ・ひしゃくの「器」をつくる3星（天枢・天璇・天璣）＝総合コンサルティング事業（戦略／営業・マーケ／業務改革・DX）
+    ・器と柄を結ぶ2星（天権・玉衡）＝アグリテック・水耕栽培事業（農業スタートアップ／ライセンス支援）…ひしゃくが汲む「水」
+    ・柄の端の2星（開陽・揺光）＝広告事業（SNS・動画広告／D2C広告運用）
     ・北斗七星が指す北極星＝お客さまの事業のゴール
 
   デプロイ：Cloudflare Pages（Direct Upload）にこの index.html をそのままアップロード
@@ -16,6 +17,7 @@
   [ ] 設立年月日・資本金・従業員数などの会社情報（未確認のため会社概要ではコメントアウト）
   [ ] 住所表記（ビル名・階数の表記ゆれ、全角/半角）
   [ ] 各サービス説明文の内容が実際の提供範囲と一致しているか
+  [ ] アグリテック事業の表記（ヤンゴンでの10年の実績・技術の説明）が事実どおりか
   [ ] 景品表示法：広告・SNS運用支援における表示内容（ステルスマーケティング規制を含む）への配慮方針の掲載要否
   [ ] 薬機法・健康増進法：D2C（化粧品・健康食品等）広告運用代行における表現チェック体制の記載要否
   [ ] 実績数値・取引先ロゴは未掲載（掲載する場合は根拠資料と先方の許諾を確認）
@@ -28,10 +30,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ななつぼし商事株式会社｜広告とコンサルティングで、進む先を照らす</title>
-<meta name="description" content="ななつぼし商事株式会社は、SNSマーケティング・動画広告・D2C広告運用の広告事業と、戦略・営業支援・業務改革・DX支援の総合コンサルティング事業を展開しています。">
+<title>ななつぼし商事株式会社｜コンサルティング・広告・アグリテックで、進む先を照らす</title>
+<meta name="description" content="ななつぼし商事株式会社は、SNSマーケティング・動画広告・D2C広告運用の広告事業、戦略・営業支援・業務改革・DX支援の総合コンサルティング事業、水耕栽培システムの開発・提供を行うアグリテック・水耕栽培事業を展開しています。">
 <meta property="og:title" content="ななつぼし商事株式会社">
-<meta property="og:description" content="七つの専門領域で、事業の進む先を指し示す。">
+<meta property="og:description" content="七つの星と、ひしゃくが汲む水。三つの事業で、進む先を指し示す。">
 <meta property="og:type" content="website">
 <!-- 要確認：og:image と og:url を公開URL確定後に設定 -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F1733'/%3E%3Cg fill='%23F3E7B8'%3E%3Ccircle cx='25' cy='8' r='2'/%3E%3Ccircle cx='26' cy='16' r='1.6'/%3E%3Ccircle cx='19' cy='18' r='1.6'/%3E%3Ccircle cx='18' cy='11' r='1.4'/%3E%3Ccircle cx='13' cy='11' r='1.6'/%3E%3Ccircle cx='9' cy='12' r='1.6'/%3E%3Ccircle cx='4' cy='17' r='1.8'/%3E%3C/g%3E%3C/svg%3E">
@@ -162,8 +164,8 @@ section{position:relative}
 .fields{background:var(--night-2)}
 .field{display:grid;grid-template-columns:1.15fr 1fr;gap:0;align-items:stretch;border-top:1px solid var(--line)}
 .field:last-child{border-bottom:1px solid var(--line)}
-.field + .field{direction:rtl}
-.field + .field > *{direction:ltr}
+.field:nth-child(even){direction:rtl}
+.field:nth-child(even) > *{direction:ltr}
 .photo{position:relative;margin:0;overflow:hidden;background:var(--night-3);min-height:380px}
 .photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;filter:saturate(.8) brightness(.82)}
 .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,23,51,.05),rgba(15,23,51,.45));pointer-events:none}
@@ -183,6 +185,12 @@ section{position:relative}
 .field-body ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .field-body li{display:flex;align-items:center;gap:14px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
 .field-body li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--star);flex:none}
+.field-body h3 + p{margin-top:18px}
+.field-body .field-note{margin:22px 0 0;font-size:.92rem;color:var(--mute)}
+.field-vision{margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.field-vision h4{font-family:var(--serif);font-weight:600;color:var(--gold);font-size:1.05rem;letter-spacing:.14em;margin:0 0 8px}
+.field-vision p{font-size:.92rem;margin:0 0 22px}
+.field-vision p:last-child{margin-bottom:0}
 
 /* ---------- services (constellation map) ---------- */
 .services{background:radial-gradient(90% 70% at 70% 30%,#1B2758,var(--night) 70%)}
@@ -289,7 +297,7 @@ section{position:relative}
   .gnav a{font-family:var(--serif);font-size:1.2rem}
   .rail{display:none}
   .concept-grid,.company-grid{grid-template-columns:1fr}
-  .field,.field + .field{grid-template-columns:1fr;direction:ltr}
+  .field,.field:nth-child(even){grid-template-columns:1fr;direction:ltr}
   .photo{min-height:260px}
   .message-in{grid-template-columns:1fr}
   .message h2.v,.message-body{writing-mode:horizontal-tb;height:auto;max-height:none}
@@ -363,11 +371,12 @@ section{position:relative}
   <div class="wrap hero-in">
     <div class="hero-copy">
       <h1><span>七つの星が、</span><span>進む先を指し示す。</span></h1>
-      <p class="hero-lead">広告とコンサルティング。<br>二つの力で、事業の道筋を描き<br>ゴールまで伴走します。</p>
+      <p class="hero-lead">コンサルティング、広告、<br>アグリテック。<br>三つの力で、事業と食の未来を描き<br>ゴールまで伴走します。</p>
     </div>
     <div class="hero-fields">
-      <a href="#field-consulting"><em>4</em>総合コンサルティング事業</a>
-      <a href="#field-ads"><em>3</em>広告事業</a>
+      <a href="#field-consulting"><em>3</em>総合コンサルティング事業</a>
+      <a href="#field-ads"><em>2</em>広告事業</a>
+      <a href="#field-agri"><em>2</em>アグリテック・水耕栽培事業</a>
     </div>
     <p class="scroll-cue" aria-hidden="true">Scroll</p>
   </div>
@@ -383,8 +392,9 @@ section{position:relative}
       </div>
       <div class="reveal">
         <p>夜空で道に迷ったとき、旅人は北斗七星を探しました。ひしゃくの先にある二つの星を結び、その先へ延ばしていくと、動かない北極星にたどり着く。</p>
-        <p>ななつぼし商事は、その七つの星でありたいと考えています。お客さまが目指す北極星、つまり事業のゴールを見失わないように、七つの専門領域から道筋を示し、そこへ向かう一歩一歩を支えます。</p>
-        <p>戦略を描くだけでも、広告を出すだけでもない。<span class="nw">描いた道を、実際に進むところまで。</span></p>
+        <p>ななつぼし商事は、その七つの星でありたいと考えています。お客さまが目指す北極星、つまり事業のゴールを見失わないように道筋を示し、そこへ向かう一歩一歩を支えます。</p>
+        <p>北斗七星は、水を汲むひしゃくの形をしています。器をつくる三つの星は、成果を受け止める土台を整えるコンサルティング。器と柄を結ぶ二つの星は、汲んだ水で命を育てるアグリテック。柄の端の二つの星は、価値を遠くへ届ける広告。三つの事業と七つのサービスで、事業の未来と食の未来を支えます。</p>
+        <p>描くだけでも、届けるだけでもない。<span class="nw">描いた道を、実際に進むところまで。</span></p>
       </div>
     </div>
     <figure class="concept-fig" id="conceptFig">
@@ -408,7 +418,7 @@ section{position:relative}
         <text class="cf-label" x="474" y="336">Dubhe</text>
         <text class="cf-label" x="474" y="432">Merak</text>
         <text class="cf-label gold" x="456" y="98">北極星 ＝ お客さまのゴール</text>
-        <text class="cf-label" x="130" y="480" style="font-family:'Shippori Mincho B1',serif;font-style:normal;font-size:14px;letter-spacing:2px">七つの専門領域</text>
+        <text class="cf-label" x="130" y="480" style="font-family:'Shippori Mincho B1',serif;font-style:normal;font-size:14px;letter-spacing:2px">七つの星</text>
       </svg>
       <figcaption>ひしゃくの先の二つの星を延ばした先に、北極星があります。</figcaption>
     </figure>
@@ -419,8 +429,8 @@ section{position:relative}
 <section class="sec fields" id="fields" aria-labelledby="fields-ttl">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="star-name">Two fields</p>
-      <h2 id="fields-ttl">器をつくり、遠くへ届ける。</h2>
+      <p class="star-name">Three fields</p>
+      <h2 id="fields-ttl"><span class="nw">器をつくり、</span><span class="nw">遠くへ届け、</span><span class="nw">命を育む。</span></h2>
     </div>
   </div>
   <div class="wrap">
@@ -430,8 +440,8 @@ section{position:relative}
       </figure>
       <div class="field-body">
         <p class="constel">
-          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="10,8 30,6 34,22 12,24 10,8" fill="none" stroke="rgba(243,231,184,.5)" stroke-width=".8"/><g fill="#F3E7B8"><circle cx="10" cy="8" r="2"/><circle cx="30" cy="6" r="2.2"/><circle cx="34" cy="22" r="2"/><circle cx="12" cy="24" r="2"/></g><g fill="#3A4677"><circle cx="44" cy="10" r="1.6"/><circle cx="52" cy="12" r="1.6"/><circle cx="60" cy="18" r="1.6"/></g></svg>
-          ひしゃくの器にあたる四つの星
+          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="4,20 18,12 32,10 40,8 58,6 60,20 42,22 40,8" fill="none" stroke="rgba(170,184,230,.3)" stroke-width=".8"/><polyline points="40,8 58,6 60,20 42,22 40,8" fill="none" stroke="rgba(243,231,184,.6)" stroke-width=".8"/><g fill="#3A4677"><circle cx="4" cy="20" r="1.6"/><circle cx="18" cy="12" r="1.6"/><circle cx="32" cy="10" r="1.6"/><circle cx="40" cy="8" r="1.6"/></g><g fill="#F3E7B8"><circle cx="58" cy="6" r="2"/><circle cx="60" cy="20" r="2"/><circle cx="42" cy="22" r="2"/></g></svg>
+          ひしゃくの器をつくる三つの星
         </p>
         <h3>総合コンサルティング事業</h3>
         <p class="catch">成果を受け止める、器をつくる。</p>
@@ -439,8 +449,7 @@ section{position:relative}
         <ul>
           <li>戦略コンサルティング</li>
           <li>マーケティング・営業支援</li>
-          <li>業務改革</li>
-          <li>DX支援</li>
+          <li>業務改革・DX支援</li>
         </ul>
       </div>
     </article>
@@ -450,18 +459,42 @@ section{position:relative}
       </figure>
       <div class="field-body">
         <p class="constel">
-          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="4,20 18,12 32,10" fill="none" stroke="rgba(243,231,184,.5)" stroke-width=".8"/><g fill="#F3E7B8"><circle cx="4" cy="20" r="2.2"/><circle cx="18" cy="12" r="2"/><circle cx="32" cy="10" r="2"/></g><g fill="#3A4677"><circle cx="40" cy="8" r="1.6"/><circle cx="58" cy="6" r="1.6"/><circle cx="60" cy="20" r="1.6"/><circle cx="42" cy="22" r="1.6"/></g></svg>
-          ひしゃくの柄にあたる三つの星
+          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="4,20 18,12 32,10 40,8 58,6 60,20 42,22 40,8" fill="none" stroke="rgba(170,184,230,.3)" stroke-width=".8"/><polyline points="18,12 4,20" fill="none" stroke="rgba(243,231,184,.6)" stroke-width=".8"/><g fill="#3A4677"><circle cx="32" cy="10" r="1.6"/><circle cx="40" cy="8" r="1.6"/><circle cx="58" cy="6" r="1.6"/><circle cx="60" cy="20" r="1.6"/><circle cx="42" cy="22" r="1.6"/></g><g fill="#F3E7B8"><circle cx="18" cy="12" r="2"/><circle cx="4" cy="20" r="2"/></g></svg>
+          ひしゃくの柄の端にある二つの星
         </p>
         <h3>広告事業</h3>
         <p class="catch">整えた価値を、遠くへ届ける。</p>
         <p>SNS、動画、D2C。お客さまの商品やサービスの魅力を、届けたい人のいる場所へ。企画・制作から運用・改善まで一貫して担います。</p>
         <ul>
-          <li>SNSマーケティング支援</li>
-          <li>動画広告制作・運用</li>
+          <li>SNSマーケティング・動画広告</li>
           <li>D2Cブランドの広告運用代行</li>
         </ul>
         <!-- 要確認：景品表示法（ステルスマーケティング規制を含む）・薬機法への対応方針をサイト上に明記するか -->
+      </div>
+    </article>
+    <article class="field reveal" id="field-agri">
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1400&q=70" alt="育苗トレイで発芽した苗を手入れする手元" loading="lazy" onerror="this.parentElement.classList.add('is-fallback');this.remove()">
+      </figure>
+      <div class="field-body">
+        <p class="constel">
+          <svg viewBox="0 0 64 28" aria-hidden="true"><polyline points="4,20 18,12 32,10 40,8 58,6 60,20 42,22 40,8" fill="none" stroke="rgba(170,184,230,.3)" stroke-width=".8"/><polyline points="32,10 40,8" fill="none" stroke="rgba(243,231,184,.6)" stroke-width=".8"/><g fill="#3A4677"><circle cx="4" cy="20" r="1.6"/><circle cx="18" cy="12" r="1.6"/><circle cx="58" cy="6" r="1.6"/><circle cx="60" cy="20" r="1.6"/><circle cx="42" cy="22" r="1.6"/></g><g fill="#F3E7B8"><circle cx="40" cy="8" r="2"/><circle cx="32" cy="10" r="2"/></g><path d="M50 10.5 C48.8 12.4 47.6 13.9 47.6 15.2 A2.4 2.4 0 0 0 52.4 15.2 C52.4 13.9 51.2 12.4 50 10.5Z" fill="rgba(243,231,184,.75)"/></svg>
+          器と柄を結ぶ二つの星、ひしゃくが汲む水
+        </p>
+        <h3><span class="nw">アグリテック・</span><span class="nw">水耕栽培事業</span></h3>
+        <p class="catch">汲んだ水で、命を育てる。</p>
+        <p>ミャンマーのヤンゴンで10年間で培った独自の水質改善技術や発芽ノウハウを活用し、収穫量と品質の向上、栽培コストの削減を実現する水耕栽培システムを開発・提供します。限られたスペースでも効率的に野菜を育てられる農業環境を構築します。</p>
+        <ul>
+          <li>農業スタートアップ</li>
+          <li>ライセンス支援事業</li>
+        </ul>
+        <p class="field-note">既存の水耕栽培事業者やこれから農業を始めたい企業や農家に向けて、栽培品目の選定、設備導入、販路開拓、収益モデルの設計まで一貫してサポート。</p>
+        <div class="field-vision">
+          <h4>農業は国防である</h4>
+          <p>この志を持ち続け日本の農業の明るい未来を創造し、心身ともに健康になる子供達のための食のインフラを整える。</p>
+          <h4>世界を変える日本の技術で地球を豊かに</h4>
+          <p>食料危機、貧困問題、環境破壊などの課題に向き合い具体的な解決案を示し世界をリードする。</p>
+        </div>
       </div>
     </article>
   </div>
@@ -474,7 +507,7 @@ section{position:relative}
       <p class="star-name">Seven stars</p>
       <h2 id="services-ttl">七つの星、七つのサービス。</h2>
     </div>
-    <p class="svc-intro reveal">星をえらぶと、そのサービスの内容が表示されます。</p>
+    <p class="svc-intro reveal">三つの事業の七つのサービスを、北斗七星の七つの星に重ねました。星をえらぶと、そのサービスの内容が表示されます。</p>
 
     <div class="svc-layout">
       <div class="reveal">
@@ -482,17 +515,20 @@ section{position:relative}
           <svg viewBox="0 0 640 360" aria-hidden="true">
             <text class="map-area" x="410" y="262">コンサルティング</text>
             <text class="map-area" x="110" y="232">広告</text>
-            <polyline class="map-line" id="lineHandle" points="90,175 200,122 290,112 390,118"/>
+            <text class="map-area" x="262" y="182">アグリテック</text>
+            <polyline class="map-line" id="lineHandle" points="90,175 200,122"/>
+            <polyline class="map-line" points="200,122 290,112"/>
+            <polyline class="map-line" id="lineJoint" points="290,112 390,118"/>
             <polyline class="map-line" id="lineBowl" points="390,118 520,72 540,172 410,202 390,118"/>
           </svg>
           <!-- 星ボタン（位置は viewBox 640x360 に対する%） -->
           <button class="map-star" style="left:81.25%;top:20%"   data-svc="0" tabindex="-1" aria-hidden="true"><span class="tip">天枢</span></button>
           <button class="map-star" style="left:84.37%;top:47.8%" data-svc="1" tabindex="-1" aria-hidden="true"><span class="tip">天璇</span></button>
           <button class="map-star" style="left:64.06%;top:56.1%" data-svc="2" tabindex="-1" aria-hidden="true"><span class="tip">天璣</span></button>
-          <button class="map-star" style="left:60.94%;top:32.8%" data-svc="3" tabindex="-1" aria-hidden="true"><span class="tip">天権</span></button>
-          <button class="map-star" style="left:45.31%;top:31.1%" data-svc="4" tabindex="-1" aria-hidden="true"><span class="tip">玉衡</span></button>
-          <button class="map-star" style="left:31.25%;top:33.9%" data-svc="5" tabindex="-1" aria-hidden="true"><span class="tip">開陽</span></button>
-          <button class="map-star" style="left:14.06%;top:48.6%" data-svc="6" tabindex="-1" aria-hidden="true"><span class="tip">揺光</span></button>
+          <button class="map-star" style="left:60.94%;top:32.8%" data-svc="5" tabindex="-1" aria-hidden="true"><span class="tip">天権</span></button>
+          <button class="map-star" style="left:45.31%;top:31.1%" data-svc="6" tabindex="-1" aria-hidden="true"><span class="tip">玉衡</span></button>
+          <button class="map-star" style="left:31.25%;top:33.9%" data-svc="3" tabindex="-1" aria-hidden="true"><span class="tip">開陽</span></button>
+          <button class="map-star" style="left:14.06%;top:48.6%" data-svc="4" tabindex="-1" aria-hidden="true"><span class="tip">揺光</span></button>
         </div>
 
         <div class="tabs">
@@ -501,16 +537,21 @@ section{position:relative}
             <div role="tablist" aria-labelledby="tg-consul">
               <button class="tab" role="tab" id="tab-0" data-svc="0" aria-controls="svcPanel" aria-selected="true">戦略コンサルティング</button>
               <button class="tab" role="tab" id="tab-1" data-svc="1" aria-controls="svcPanel" aria-selected="false" tabindex="-1">マーケティング・営業支援</button>
-              <button class="tab" role="tab" id="tab-2" data-svc="2" aria-controls="svcPanel" aria-selected="false" tabindex="-1">業務改革</button>
-              <button class="tab" role="tab" id="tab-3" data-svc="3" aria-controls="svcPanel" aria-selected="false" tabindex="-1">DX支援</button>
+              <button class="tab" role="tab" id="tab-2" data-svc="2" aria-controls="svcPanel" aria-selected="false" tabindex="-1">業務改革・DX支援</button>
             </div>
           </div>
           <div class="tab-group">
             <h3 id="tg-ads">広告事業</h3>
             <div role="tablist" aria-labelledby="tg-ads">
-              <button class="tab" role="tab" id="tab-4" data-svc="4" aria-controls="svcPanel" aria-selected="false" tabindex="-1">SNSマーケティング支援</button>
-              <button class="tab" role="tab" id="tab-5" data-svc="5" aria-controls="svcPanel" aria-selected="false" tabindex="-1">動画広告制作・運用</button>
-              <button class="tab" role="tab" id="tab-6" data-svc="6" aria-controls="svcPanel" aria-selected="false" tabindex="-1">D2Cブランドの広告運用代行</button>
+              <button class="tab" role="tab" id="tab-3" data-svc="3" aria-controls="svcPanel" aria-selected="false" tabindex="-1">SNSマーケティング・動画広告</button>
+              <button class="tab" role="tab" id="tab-4" data-svc="4" aria-controls="svcPanel" aria-selected="false" tabindex="-1">D2Cブランドの広告運用代行</button>
+            </div>
+          </div>
+          <div class="tab-group">
+            <h3 id="tg-agri">アグリテック・水耕栽培事業</h3>
+            <div role="tablist" aria-labelledby="tg-agri">
+              <button class="tab" role="tab" id="tab-5" data-svc="5" aria-controls="svcPanel" aria-selected="false" tabindex="-1">農業スタートアップ</button>
+              <button class="tab" role="tab" id="tab-6" data-svc="6" aria-controls="svcPanel" aria-selected="false" tabindex="-1">ライセンス支援事業</button>
             </div>
           </div>
         </div>
@@ -558,7 +599,7 @@ section{position:relative}
         <div class="step-mark"><i></i><span>03</span></div>
         <h3>航路を進む</h3>
         <p class="sub">施策の実行</p>
-        <p>営業や業務の改善、広告の制作・運用など、描いた計画を形にします。</p>
+        <p>営業や業務の改善、広告の制作・運用、水耕栽培システムの導入など、描いた計画を形にします。</p>
       </li>
       <li>
         <div class="step-mark"><i></i><span>04</span></div>
@@ -583,7 +624,8 @@ section{position:relative}
       <p>やるべきことは山ほどあるのに、どれから手をつければいいのかわからない。</p>
       <p>そんなとき、見上げれば必ずそこにある星のような存在でありたい。</p>
       <p>それが、ななつぼし商事という名前に込めた思いです。</p>
-      <p>戦略を描くこと、広告で届けること。その両方を一つのチームで担えることが、私たちの強みです。</p>
+      <p>戦略を描くこと、広告で届けること、そして食を育てること。三つの事業を一つのチームで担えることが、私たちの強みです。</p>
+      <p>ミャンマーのヤンゴンで十年かけて培った水耕栽培の技術で、日本の農業と、子供達の食の未来にも向き合ってまいります。</p>
       <p>お客さまの北極星へ、同じ夜空を見ながら進んでまいります。</p>
       <p class="sign"><span>ななつぼし商事株式会社　代表取締役</span><!-- 要確認：肩書き --><br><strong>佐藤 有輝</strong></p>
     </div>
@@ -612,9 +654,11 @@ section{position:relative}
           <th scope="row">事業内容</th>
           <td>
             <h5>広告業</h5>
-            <ul><li>SNSマーケティング支援</li><li>動画広告制作・運用</li><li>D2Cブランドの広告運用代行</li></ul>
+            <ul><li>SNSマーケティング・動画広告</li><li>D2Cブランドの広告運用代行</li></ul>
             <h5>総合コンサルティング業</h5>
-            <ul><li>戦略コンサルティング</li><li>マーケティング・営業支援</li><li>業務改革</li><li>DX支援</li></ul>
+            <ul><li>戦略コンサルティング</li><li>マーケティング・営業支援</li><li>業務改革・DX支援</li></ul>
+            <h5>アグリテック・水耕栽培事業</h5>
+            <ul><li>農業スタートアップ</li><li>ライセンス支援事業</li></ul>
           </td>
         </tr>
       </tbody>
@@ -706,22 +750,23 @@ section{position:relative}
     { field:'総合コンサルティング事業', star:'天璇 Merak', title:'マーケティング・営業支援', img:'photo-1600880292203-757bb62b4baf', alt:'商談をするビジネスパーソン',
       desc:'顧客像の整理から、集客・商談・受注までの流れを設計します。仕組みをつくって終わりにせず、現場のみなさんと一緒に動かします。',
       kw:['顧客設計','営業プロセス','商談資料','インサイドセールス'] },
-    { field:'総合コンサルティング事業', star:'天璣 Phecda', title:'業務改革', img:'photo-1504384308090-c894fdcc538d', alt:'ノートパソコンで作業するオフィスの様子',
-      desc:'業務の流れを見える化し、ムダや属人化をほどいていきます。少ない負荷で回り続ける仕組みへ、無理のない順番で組み替えます。',
-      kw:['業務フロー整理','標準化','マニュアル整備','組織設計'] },
-    { field:'総合コンサルティング事業', star:'天権 Megrez', title:'DX支援', img:'photo-1531297484001-80022131f5a1', alt:'ノートパソコンとデジタル機器',
-      desc:'ツールの選定から導入、社内への定着まで伴走します。デジタルを「入れただけ」で終わらせず、毎日使われる道具にするところまでが支援範囲です。',
-      kw:['ツール選定','導入支援','データ活用','社内定着'] },
-    { field:'広告事業', star:'玉衡 Alioth', title:'SNSマーケティング支援', img:'photo-1423784346385-c1d4dac9893a', alt:'スマートフォンでSNSを見ている手元',
-      desc:'アカウント設計、投稿の企画、日々の運用、数値の分析まで。ブランドらしさが伝わり、ファンが育っていく発信をつくります。',
-      kw:['アカウント設計','投稿企画','運用代行','分析レポート'] },
-    { field:'広告事業', star:'開陽 Mizar', title:'動画広告制作・運用', img:'photo-1492691527719-9d1e07e534b4', alt:'撮影用のカメラ',
-      desc:'企画・撮影・編集から配信、効果改善までを一貫して担います。縦型のショート動画から横型の映像まで、配信する媒体に合わせて制作します。',
-      kw:['企画・構成','撮影・編集','ショート動画','配信運用'] },
+    { field:'総合コンサルティング事業', star:'天璣 Phecda', title:'業務改革・DX支援', img:'photo-1504384308090-c894fdcc538d', alt:'ノートパソコンで作業するオフィスの様子',
+      desc:'業務の流れを見える化してムダや属人化をほどき、ツールの選定・導入から社内への定着まで伴走します。デジタルを「入れただけ」で終わらせず、少ない負荷で回り続ける仕組みに組み替えます。',
+      kw:['業務フロー整理','標準化','ツール選定・導入','データ活用','社内定着'] },
+    { field:'広告事業', star:'開陽 Mizar', title:'SNSマーケティング・動画広告', img:'photo-1423784346385-c1d4dac9893a', alt:'スマートフォンでSNSを見ている手元',
+      desc:'アカウント設計や投稿の企画・運用から、動画広告の企画・撮影・編集・配信まで。縦型のショート動画も含め、媒体に合わせてブランドらしさが伝わる発信を一貫してつくります。',
+      kw:['アカウント設計','投稿企画・運用','ショート動画','撮影・編集','配信・分析'] },
     { field:'広告事業', star:'揺光 Alkaid', title:'D2Cブランドの広告運用代行', img:'photo-1460925895917-afdab827c52f', alt:'分析データが表示されたノートパソコン',
       desc:'新規顧客の獲得効率と、継続購入につながる顧客づくりの両面を見ながら、広告アカウントの設計・運用・レポーティングを担います。',
-      kw:['運用型広告','クリエイティブ改善','LTV視点','レポーティング'] }
+      kw:['運用型広告','クリエイティブ改善','LTV視点','レポーティング'] },
+    { field:'アグリテック・水耕栽培事業', star:'天権 Megrez', title:'農業スタートアップ', img:'photo-1591857177580-dc82b9ac4e1e', alt:'畑で育つレタスなどの葉物野菜',
+      desc:'これから農業を始めたい企業や農家に向けて、栽培品目の選定から設備導入、販路開拓、収益モデルの設計まで一貫してサポートします。限られたスペースでも効率的に野菜を育てられる環境を、一緒につくります。',
+      kw:['栽培品目の選定','設備導入','販路開拓','収益モデル設計'] },
+    { field:'アグリテック・水耕栽培事業', star:'玉衡 Alioth', title:'ライセンス支援事業', img:'photo-1530836369250-ef72a3f5cda8', alt:'育苗トレイで発芽した苗を手入れする手元',
+      desc:'ミャンマーのヤンゴンで10年間で培った独自の水質改善技術や発芽ノウハウを、既存の水耕栽培事業者に提供します。収穫量と品質の向上、栽培コストの削減を支えます。',
+      kw:['水質改善技術','発芽ノウハウ','収穫量・品質の向上','栽培コスト削減'] }
   ];
+  /* 要確認：アグリテックの2サービスの説明は、いただいた事業説明から割り振った案。実際の提供範囲と合っているか */
   /* 要確認：D2C（化粧品・健康食品など）の広告は薬機法・景品表示法の表現規制の対象。チェック体制の記載要否 */
 
   const tabs = [...document.querySelectorAll('.tab')];
@@ -730,7 +775,7 @@ section{position:relative}
   const inner = document.getElementById('panelInner');
   const photo = document.getElementById('panelPhoto');
   const $ = id => document.getElementById(id);
-  const lineHandle = $('lineHandle'), lineBowl = $('lineBowl');
+  const lineHandle = $('lineHandle'), lineBowl = $('lineBowl'), lineJoint = $('lineJoint');
   let current = 0, swapTimer;
 
   const render = (i) => {
@@ -758,8 +803,9 @@ section{position:relative}
       if (on && focus) t.focus();
     });
     mapStars.forEach(m => m.classList.toggle('is-active', Number(m.dataset.svc) === i));
-    lineBowl.classList.toggle('hl', i <= 3);
-    lineHandle.classList.toggle('hl', i >= 4);
+    lineBowl.classList.toggle('hl', i <= 2);
+    lineHandle.classList.toggle('hl', i === 3 || i === 4);
+    lineJoint.classList.toggle('hl', i >= 5);
     panel.setAttribute('aria-labelledby', 'tab-' + i);
     clearTimeout(swapTimer);
     if (reduce) { render(i); return; }
